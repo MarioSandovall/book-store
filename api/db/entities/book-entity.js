@@ -9,4 +9,4 @@ const BookEntity = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('movies', BookEntity)
+module.exports = mongoose.model('books', BookEntity)

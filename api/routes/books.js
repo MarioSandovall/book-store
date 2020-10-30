@@ -4,16 +4,23 @@ const HTTP_STATUS_CODE = require("../utils/http-status-code ");
 
 const Reponse = require("../models/reponse");
 const BookEntity = require("../db/entities/book-entity");
-
+const Book = require("../models/book");
 const router = express.Router();
 
 router.get("/", async function (req, res) {
   const response = new Reponse();
-  await BookEntity.find({}, (error, books) => {
+  await BookEntity.find({}, (error, bookEntities) => {
     if (error) {
       response.markAsFailure("Something went wrong");
       return res.status(HTTP_STATUS_CODE.INTERNAL_ERROR).json(response);
     }
+
+    const books = bookEntities.map((entity) => {
+      const model = new Book();
+      model.id = entity._id;
+      model.name = entity.name;
+      return model;
+    });
 
     return res.status(HTTP_STATUS_CODE.OK).json({ success: true, books });
   }).catch((error) => {
@@ -24,7 +31,6 @@ router.get("/", async function (req, res) {
 
 router.get("/:id", async function (req, res) {
   const response = new Reponse();
-
   await BookEntity.findOne({ _id: req.params.id }, (error, book) => {
     if (error) {
       response.markAsFailure("Something went wrong");
@@ -47,7 +53,7 @@ router.post("/", function (req, res) {
   const body = req.body;
   const response = new Reponse();
 
-  if (!body) {
+  if (Object.keys(body).length === 0) {
     response.markAsFailure("You must provide a book");
     return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json(response);
   }
@@ -75,7 +81,7 @@ router.put("/:id", async function (req, res) {
   const body = req.body;
   const response = new Reponse();
 
-  if (!body) {
+  if (Object.keys(body).length === 0) {
     response.markAsFailure("You must provide a book to update");
     return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json(response);
   }
@@ -85,7 +91,7 @@ router.put("/:id", async function (req, res) {
       response.markAsSuccess("Book not found");
       return res.status(HTTP_STATUS_CODE.NOT_FOUND).json(response);
     }
-
+    
     book.name = body.name;
 
     book
@@ -110,7 +116,7 @@ router.delete("/:id", async function (req, res) {
       return res.status(HTTP_STATUS_CODE.INTERNAL_ERROR).json(response);
     }
 
-    if (book) {
+    if (!book) {
       response.markAsFailure("Book not found");
       return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json(response);
     }

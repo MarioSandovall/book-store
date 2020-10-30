@@ -1,13 +1,20 @@
 import React from "react";
-import "./App.css";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import ToolBar from './componets/toolbar/toolbar'
+import Layout from "./componets/Layout/Layout";
+import Home from "./pages/Home/Home";
+import Book from "./pages/Book/Book";
 
 function App() {
   return (
-    <div className="App">
-      <ToolBar></ToolBar>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Switch>
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/" component={Book} />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
   );
 }
 

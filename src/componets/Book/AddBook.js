@@ -6,6 +6,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
+import SaveIcon from "@material-ui/icons/Save";
 
 import BookService from "../../pages/Book/BookService";
 
@@ -39,7 +40,11 @@ export default class AddBook extends React.Component {
         </DialogContent>
         <DialogActions>
           <Button onClick={this.props.onClose}>Cancel</Button>
-          <Button onClick={this.handleSave} color="primary">
+          <Button
+            onClick={this.handleSave}
+            color="primary"
+            startIcon={<SaveIcon />}
+          >
             Save
           </Button>
         </DialogActions>

@@ -3,6 +3,11 @@ import React, { Component } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
+import IconButton from "@material-ui/core/IconButton";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import AddIcon from "@material-ui/icons/Add";
 
 import bookService from "./BookService";
 import BookAdd from "../../componets/Book/AddBook";
@@ -43,14 +48,9 @@ export default class Book extends Component {
           });
         };
         return (
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            onClick={onEdit}
-          >
-            Edit
-          </Button>
+          <IconButton aria-label="edit" onClick={onEdit}>
+            <EditIcon fontSize="small" />
+          </IconButton>
         );
       },
     },
@@ -68,14 +68,9 @@ export default class Book extends Component {
           });
         };
         return (
-          <Button
-            variant="contained"
-            color="secondary"
-            size="small"
-            onClick={onRemove}
-          >
-            Remove
-          </Button>
+          <IconButton aria-label="remove" onClick={onRemove}>
+            <DeleteIcon fontSize="small" />
+          </IconButton>
         );
       },
     },
@@ -133,14 +128,21 @@ export default class Book extends Component {
   render() {
     return (
       <>
-        <Typography variant="h4">Books</Typography>
-        <Button
-          variant="outlined"
-          onClick={this.handleOpenBookAddModal}
-          color="primary"
-        >
-          Add Book
-        </Button>
+        <Box my={2}>
+          <Typography variant="h4">Books</Typography>
+        </Box>
+        <Box my={2}>
+          <Button
+            m={3}
+            variant="outlined"
+            onClick={this.handleOpenBookAddModal}
+            color="primary"
+            startIcon={<AddIcon />}
+          >
+            Add Book
+          </Button>
+        </Box>
+
         <div style={{ height: 400, width: "100%" }}>
           <DataGrid
             rows={this.state.books}

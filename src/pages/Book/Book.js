@@ -20,11 +20,21 @@ export default class Book extends Component {
     this.state = {
       books: [],
       bookToAdd: {
-        name: "",
+        title: "",
+        description: "",
+        genre: "",
+        author: "",
+        price: "",
+        stock: "",
       },
       bookToEdit: {
         id: 0,
-        name: "",
+        title: "",
+        description: "",
+        genre: "",
+        author: "",
+        price: "",
+        stock: "",
       },
       bookIdToRemove: 0,
       isAddBookModalOpen: false,
@@ -33,8 +43,11 @@ export default class Book extends Component {
     };
   }
   columns = [
-    { field: "id", headerName: "Id", width: 200 },
-    { field: "name", headerName: "Name", width: 200 },
+    { field: "title", headerName: "Title", width: 200 },
+    { field: "genre", headerName: "Genre", width: 200 },
+    { field: "author", headerName: "Author", width: 200 },
+    { field: "price", headerName: "Price", width: 200 },
+    { field: "stock", headerName: "stock", width: 200 },
     {
       field: "edit",
       headerName: " ",
@@ -121,6 +134,7 @@ export default class Book extends Component {
     this.setState({
       ...this.state,
       bookToAdd: {
+        ...this.state.bookToAdd,
         [e.target.name]: e.target.value,
       },
     });

@@ -1,6 +1,11 @@
 class Book {
   id = "";
-  name = "";
+  title = "";
+  description = "";
+  genre = "";
+  author = "";
+  price = 0;
+  stock = 0;
 }
 
 module.exports = Book;

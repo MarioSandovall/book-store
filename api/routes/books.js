@@ -17,8 +17,15 @@ router.get("/", async function (req, res) {
 
     const books = bookEntities.map((entity) => {
       const model = new Book();
+
       model.id = entity._id;
-      model.name = entity.name;
+      model.title = entity.title;
+      model.description = entity.description;
+      model.genre = entity.genre;
+      model.author = entity.author;
+      model.price = entity.price;
+      model.stock = entity.stock;
+
       return model;
     });
 
@@ -91,8 +98,13 @@ router.put("/:id", async function (req, res) {
       response.markAsSuccess("Book not found");
       return res.status(HTTP_STATUS_CODE.NOT_FOUND).json(response);
     }
-    
-    book.name = body.name;
+
+    book.title = body.title;
+    book.description = body.description;
+    book.genre = body.genre;
+    book.author = body.author;
+    book.price = body.price;
+    book.stock = body.stock;
 
     book
       .save()

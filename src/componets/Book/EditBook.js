@@ -8,6 +8,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import SaveIcon from "@material-ui/icons/Save";
 
+import "./styles/AddBook.css";
 import BookService from "../../pages/Book/BookService";
 
 export default class EditBook extends React.Component {
@@ -29,13 +30,64 @@ export default class EditBook extends React.Component {
         <DialogTitle id="form-dialog-title">Edit Book</DialogTitle>
         <DialogContent>
           <TextField
+            className="text-field"
             type="text"
-            id="name"
-            name="name"
-            label="Name"
+            id="title"
+            name="title"
+            label="Title"
             fullWidth
             onChange={this.props.onChange}
-            value={this.props.book.name}
+            value={this.props.book.title}
+          />
+          <TextField
+            className="text-field"
+            type="text"
+            id="description"
+            name="description"
+            label="Description"
+            fullWidth
+            onChange={this.props.onChange}
+            value={this.props.book.description}
+          />
+          <TextField
+            className="text-field"
+            type="text"
+            id="genre"
+            name="genre"
+            label="Genre"
+            fullWidth
+            onChange={this.props.onChange}
+            value={this.props.book.genre}
+          />
+          <TextField
+            className="text-field"
+            type="text"
+            id="author"
+            name="author"
+            label="Author"
+            fullWidth
+            onChange={this.props.onChange}
+            value={this.props.book.author}
+          />
+          <TextField
+            className="text-field"
+            type="number"
+            id="price"
+            name="price"
+            label="Price"
+            fullWidth
+            onChange={this.props.onChange}
+            value={this.props.book.price}
+          />
+          <TextField
+            className="text-field"
+            type="number"
+            id="stock"
+            name="stock"
+            label="Stock"
+            fullWidth
+            onChange={this.props.onChange}
+            value={this.props.book.stock}
           />
         </DialogContent>
         <DialogActions>

@@ -23,7 +23,7 @@ export default class AddBook extends React.Component {
       }
     );
   };
-  render() {
+  render () {
     return (
       <Dialog open={this.props.open} onClose={this.props.onClose}>
         <DialogTitle id="form-dialog-title">Add Book</DialogTitle>

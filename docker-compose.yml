@@ -33,4 +33,6 @@ services:
     container_name: db
     image: mongo
     volumes:
-      - './data:/data/db'
+      # - './data:/data/db'
+      - /data/db
+      - /data/configdb

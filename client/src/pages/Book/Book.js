@@ -108,10 +108,22 @@ export default class Book extends Component {
     );
   };
   handleOpenBookAddModal = () => {
+    console.log(this.state)
     this.setState({
       ...this.state,
+      bookToAdd: {
+        title: "",
+        description: "",
+        genre: "",
+        author: "",
+        price: "",
+        stock: "",
+      },
       isAddBookModalOpen: true,
     });
+
+    console.log(this.state)
+
   };
   handleCloseBookModal = () => {
     this.setState({

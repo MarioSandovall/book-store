@@ -15,7 +15,6 @@ export default class RemoveBook extends React.Component {
     BookService.deleteById(id).then(
       (response) => {
         this.props.onSaved();
-        console.log(response);
       },
       (error) => {
         console.error(error);

@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const api = axios.create({
-  baseURL: "http://localhost:9000",
-});
+const api = axios.create({ baseURL: process.env.REACT_APP_API });
 
 export const getAll = () => api.get(`/book`);
 export const getByID = (id) => api.get(`/book/${id}`);

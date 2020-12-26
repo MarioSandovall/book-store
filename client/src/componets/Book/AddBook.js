@@ -17,7 +17,6 @@ export default class AddBook extends React.Component {
     BookService.add(book).then(
       (response) => {
         this.props.onSaved();
-        console.log(response);
       },
       (error) => {
         console.error(error);

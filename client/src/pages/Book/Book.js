@@ -88,7 +88,7 @@ export default class Book extends Component {
       },
     },
   ];
-  componentDidMount() {
+  componentDidMount () {
     this.handleGetBooks();
   }
   handleGetBooks = () => {
@@ -103,7 +103,7 @@ export default class Book extends Component {
         });
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   };
@@ -139,7 +139,7 @@ export default class Book extends Component {
       },
     });
   };
-  render() {
+  render () {
     return (
       <>
         <Box my={2}>

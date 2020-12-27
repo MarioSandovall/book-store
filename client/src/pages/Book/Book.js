@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-import { DataGrid } from "@material-ui/data-grid";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
+import Button from "@material-ui/core/Button";
+import EditIcon from "@material-ui/icons/Edit";
+import { DataGrid } from "@material-ui/data-grid";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 
 import bookService from "./BookService";
 import BookAdd from "../../componets/Book/AddBook";
@@ -108,7 +108,6 @@ export default class Book extends Component {
     );
   };
   handleOpenBookAddModal = () => {
-    console.log(this.state)
     this.setState({
       ...this.state,
       bookToAdd: {
@@ -121,9 +120,6 @@ export default class Book extends Component {
       },
       isAddBookModalOpen: true,
     });
-
-    console.log(this.state)
-
   };
   handleCloseBookModal = () => {
     this.setState({

@@ -1,14 +1,15 @@
 import React from "react";
 
+import "./styles/AddBook.css";
+
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
+import SaveIcon from "@material-ui/icons/Save";
+import TextField from "@material-ui/core/TextField";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
-import SaveIcon from "@material-ui/icons/Save";
 
-import "./styles/AddBook.css";
 import BookService from "../../pages/Book/BookService";
 
 export default class EditBook extends React.Component {
@@ -17,14 +18,13 @@ export default class EditBook extends React.Component {
     BookService.update(book.id, book).then(
       (response) => {
         this.props.onSaved();
-        console.log(response);
       },
       (error) => {
         console.error(error);
       }
     );
   };
-  render() {
+  render () {
     return (
       <Dialog open={this.props.open} onClose={this.props.onClose}>
         <DialogTitle id="form-dialog-title">Edit Book</DialogTitle>
